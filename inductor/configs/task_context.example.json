@@ -1,0 +1,24 @@
+{
+  "model_name": null,
+  "model_path": null,
+  "execution": {
+    "location": null,
+    "python": null,
+    "gpu": null,
+    "hardware": null,
+    "max_idle_memory_mib": null,
+    "source_root": null,
+    "adapter_root": null
+  },
+  "accuracy": {
+    "reference_policy": null,
+    "rtol": null,
+    "atol": null
+  },
+  "workload": {
+    "input_source": null,
+    "shape_and_batch_contract": null,
+    "target_modes": ["ordinary", "graph"],
+    "promotion_criteria": null
+  }
+}

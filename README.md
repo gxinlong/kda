@@ -9,6 +9,9 @@ This repository documents an early research prototype and remains under active d
 | Path | Purpose |
 |---|---|
 | `docs/agent-flow.md` | Minimal end-to-end KDA workflow. |
+| `inductor/` | Model-level AOTInductor optimization around KDA kernel loops. |
+| `skills/inductor-model-optimization/SKILL.md` | Fresh-context entrypoint for model compilation, profiling, template optimization and handoff. |
+| `AGENTS.md` | Agent routing for model versus standalone-kernel tasks. |
 | `prompts/README.md` | How to use prompt templates. |
 | `prompts/basic-flow.md` | Generic starter prompt for a new task. |
 | `CLAUDE.md` | Repository-facing agent instructions. |
@@ -42,6 +45,12 @@ git clone https://github.com/mit-han-lab/ncu-report-skill.git
 Use KernelWiki from this repository's pinned submodule. A direct upstream
 checkout may contain artifact snapshots governed by additional terms that are
 omitted from this distribution.
+
+For complete-model Inductor optimization, start with the
+[model optimization skill](skills/inductor-model-optimization/SKILL.md) and
+[tool recipes](inductor/docs/tool-recipes.md). The skill is repository-local; it
+requires no global installation. Supply task-specific model, runtime, hardware,
+GPU and accuracy context using the [starter prompt](prompts/inductor-model.md).
 
 ## Submodules
 

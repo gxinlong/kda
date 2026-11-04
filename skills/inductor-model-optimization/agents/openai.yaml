@@ -1,0 +1,6 @@
+interface:
+  display_name: "Inductor Model Optimization"
+  short_description: "Optimize AOT models through measured KDA kernel loops"
+  default_prompt: "Use $inductor-model-optimization to compile, profile, optimize, and validate this model using my supplied runtime, hardware, GPU, and accuracy contract."
+policy:
+  allow_implicit_invocation: true

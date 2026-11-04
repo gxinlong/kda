@@ -20,3 +20,6 @@ The templates are intentionally task-agnostic. Fill in the task objective, const
 6. Run the implementation loop with validation after each meaningful change.
 
 Task-specific prompts should live with the task they describe. Do not add benchmark-specific datasets, acceptance tables, or private evaluator details to this generic repository.
+
+For complete-model AOTInductor work, use [inductor-model.md](inductor-model.md) and
+the repository-local [model optimization skill](../skills/inductor-model-optimization/SKILL.md).

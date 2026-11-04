@@ -31,3 +31,11 @@ Use external skills only when they are relevant to the active task:
 - `humanize` for plan generation and implementation loops.
 - A domain knowledge skill for background research.
 - A profiling or report-analysis skill for performance evidence.
+
+## Model-level Inductor Tasks
+
+For complete-model compilation and optimization, use
+[the Inductor model skill](skills/inductor-model-optimization/SKILL.md). It adds
+immutable baseline compilation, measured hotspot selection, KDA kernel subloops,
+template integration and whole-model acceptance. Task-specific outputs belong in
+ignored `agent_space/<model>_<task-date>/`; reusable mechanics remain in `inductor/`.

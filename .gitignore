@@ -12,3 +12,9 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+/agent_space/
+
+# Local runtime logs and macOS transfer metadata
+/error.log
+/info.log
+._*

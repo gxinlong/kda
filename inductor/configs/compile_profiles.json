@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "baseline_id": "inductor-aot-baseline-v1",
+  "compatibility": {
+    "tested_torch_series": [
+      "2.14"
+    ],
+    "policy": "Require all requested config keys. Branch-specific environment switches must be checked in the supplied compiler/adapter; no automatic safe fallback."
+  },
+  "default_profile": "default",
+  "inherit_inductor_configs": [
+    "coordinate_descent_tuning",
+    "coordinate_descent_check_all_directions",
+    "max_fusion_size",
+    "realize_reads_threshold",
+    "realize_opcount_threshold",
+    "emulate_precision_casts",
+    "force_disable_caches",
+    "triton.cudagraphs"
+  ],
+  "profiles": {
+    "default": {
+      "inductor_configs": {
+        "max_autotune": true,
+        "epilogue_fusion": true,
+        "permute_fusion": true,
+        "max_autotune_pointwise": true,
+        "max_autotune_gemm": true,
+        "aggressive_fusion": true,
+        "combo_kernels": true,
+        "combo_kernel_foreach_dynamic_shapes": true,
+        "aot_inductor.use_runtime_constant_folding": false,
+        "max_autotune_gemm_backends": "ATEN,CUTLASS,TRITON",
+        "combo_kernel_max_num_nodes": 8
+      },
+      "torch_backends": {
+        "cuda.matmul.allow_tf32": true,
+        "cudnn.allow_tf32": true
+      },
+      "environment": {
+        "TORCHINDUCTOR_MEMORY_PLANNING": "1",
+        "TORCHINDUCTOR_MEMORY_POOL": "combined",
+        "TORCHINDUCTOR_FREEZING": "1",
+        "FIXED_INDUCTOR_ENGINE_WORKSPACE": "1",
+        "CONCAT_FUSE_DYNAMIC": "1",
+        "TORCH_COMPILE_DEBUG": "1",
+        "TORCH_COMPILE_DEBUG_DIR": "<work_dir>/inductor_debug",
+        "AOT_UNBACKED_SAFE": "0"
+      }
+    },
+    "safe": {
+      "inductor_configs": {
+        "max_autotune": true,
+        "epilogue_fusion": false,
+        "permute_fusion": true,
+        "max_autotune_pointwise": true,
+        "max_autotune_gemm": false,
+        "aggressive_fusion": false,
+        "combo_kernels": false,
+        "combo_kernel_foreach_dynamic_shapes": false,
+        "aot_inductor.use_runtime_constant_folding": false,
+        "max_autotune_gemm_backends": "ATEN,CUTLASS,TRITON"
+      },
+      "torch_backends": {
+        "cuda.matmul.allow_tf32": true,
+        "cudnn.allow_tf32": true
+      },
+      "environment": {
+        "TORCHINDUCTOR_MEMORY_PLANNING": null,
+        "TORCHINDUCTOR_MEMORY_POOL": "combined",
+        "TORCHINDUCTOR_FREEZING": "1",
+        "FIXED_INDUCTOR_ENGINE_WORKSPACE": null,
+        "CONCAT_FUSE_DYNAMIC": "1",
+        "TORCH_COMPILE_DEBUG": "1",
+        "TORCH_COMPILE_DEBUG_DIR": "<work_dir>/inductor_debug",
+        "AOT_UNBACKED_SAFE": "1"
+      }
+    }
+  }
+}
